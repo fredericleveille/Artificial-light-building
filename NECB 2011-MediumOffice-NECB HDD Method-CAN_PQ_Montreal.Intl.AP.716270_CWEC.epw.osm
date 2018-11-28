@@ -1,11 +1,11 @@
 
 OS:Version,
-  {67e04f82-691a-411d-8f4b-0a347377fb07}, !- Handle
-  2.1.0;                                  !- Version Identifier
+  {15cd2dc7-4a4d-405c-8991-30d0bd726bf2}, !- Handle
+  2.5.0;                                  !- Version Identifier
 
 OS:Site,
   {4401af15-c546-44f8-96c5-410b73437a27}, !- Handle
-  Montreal Int'l_PQ_CAN,                  !- Name
+  Montreal Int'l,                         !- Name
   45.47,                                  !- Latitude {deg}
   -73.75,                                 !- Longitude {deg}
   -5,                                     !- Time Zone {hr}
@@ -2967,20 +2967,6 @@ OS:Rendering:Color,
   240,                                    !- Rendering Red Value
   248,                                    !- Rendering Green Value
   255;                                    !- Rendering Blue Value
-
-OS:WeatherFile,
-  {0b669b27-28a1-4315-8966-085e0cf2375d}, !- Handle
-  Montreal Int'l,                         !- City
-  PQ,                                     !- State Province Region
-  CAN,                                    !- Country
-  WYEC2-B-94792,                          !- Data Source
-  716270,                                 !- WMO Number
-  45.47,                                  !- Latitude {deg}
-  -73.75,                                 !- Longitude {deg}
-  -5,                                     !- Time Zone {hr}
-  36,                                     !- Elevation {m}
-  file:///root/projects/necb_archtypes_generator/openstudio-standards/openstudio-standards/data/weather/CAN_PQ_Montreal.Intl.AP.716270_CWEC.epw, !- Url
-  3C3F39E2;                               !- Checksum
 
 OS:Site:GroundTemperature:BuildingSurface,
   {cc7ed848-2bda-460a-b174-a0c6d7036a51}, !- Handle
@@ -7024,6 +7010,7 @@ OS:PlantLoop,
   {2868472d-0145-4140-ad83-611c2dfdef90}, !- Handle
   Chilled Water Loop,                     !- Name
   ,                                       !- Fluid Type
+  0,                                      !- Glycol Concentration
   ,                                       !- User Defined Fluid Type
   ,                                       !- Plant Equipment Operation Heating Load
   ,                                       !- Plant Equipment Operation Cooling Load
@@ -7042,10 +7029,23 @@ OS:PlantLoop,
   ,                                       !- Demand Side Branch List Name
   ,                                       !- Demand Side Connector List Name
   Optimal,                                !- Load Distribution Scheme
-  ,                                       !- Availability Manager List Name
+  {1421e1f8-c72b-4c83-aebb-180769b782b3}, !- Availability Manager List Name
   ,                                       !- Plant Loop Demand Calculation Scheme
   ,                                       !- Common Pipe Simulation
-  ;                                       !- Pressure Simulation Type
+  ,                                       !- Pressure Simulation Type
+  ,                                       !- Plant Equipment Operation Heating Load Schedule
+  ,                                       !- Plant Equipment Operation Cooling Load Schedule
+  ,                                       !- Primary Plant Equipment Operation Scheme Schedule
+  ,                                       !- Component Setpoint Operation Scheme Schedule
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter Name
+  ,                                       !- Supply Mixer Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {1421e1f8-c72b-4c83-aebb-180769b782b3}, !- Handle
+  Chilled Water Loop AvailabilityManagerAssignmentList, !- Name
+  ;                                       !- Availability Manager Name 1
 
 OS:Sizing:Plant,
   {ab824d4c-5572-4043-a07f-c403b574a2b4}, !- Handle
@@ -7205,7 +7205,10 @@ OS:Pump:ConstantSpeed,
   ,                                       !- Impeller Diameter {m}
   ,                                       !- Rotational Speed {rev/min}
   ,                                       !- Zone
-  ;                                       !- Skin Loss Radiative Fraction
+  ,                                       !- Skin Loss Radiative Fraction
+  PowerPerFlowPerPressure,                !- Design Power Sizing Method
+  348701.1,                               !- Design Electric Power per Unit Flow Rate {W/(m3/s)}
+  1.282051282;                            !- Design Shaft Power per Unit Flow Rate per Unit Head {W-s/m3-Pa}
 
 OS:Chiller:Electric:EIR,
   {74ce1f69-2bcb-4ce4-94b0-2dbf91a66b5f}, !- Handle
@@ -7238,7 +7241,11 @@ OS:Chiller:Electric:EIR,
   1,                                      !- Sizing Factor
   0,                                      !- Basin Heater Capacity {W/K}
   10,                                     !- Basin Heater Setpoint Temperature {C}
-  ;                                       !- Basin Heater Operating Schedule Name
+  ,                                       !- Basin Heater Operating Schedule Name
+  ,                                       !- Condenser Heat Recovery Relative Capacity Fraction
+  ,                                       !- Heat Recovery Inlet High Temperature Limit Schedule Name
+  ,                                       !- Heat Recovery Leaving Temperature Setpoint Node Name
+  General;                                !- End-Use Subcategory
 
 OS:Curve:Biquadratic,
   {a2cd204e-454d-4cc8-b093-7176cf8b344e}, !- Handle
@@ -7308,7 +7315,11 @@ OS:Chiller:Electric:EIR,
   1,                                      !- Sizing Factor
   0,                                      !- Basin Heater Capacity {W/K}
   10,                                     !- Basin Heater Setpoint Temperature {C}
-  ;                                       !- Basin Heater Operating Schedule Name
+  ,                                       !- Basin Heater Operating Schedule Name
+  ,                                       !- Condenser Heat Recovery Relative Capacity Fraction
+  ,                                       !- Heat Recovery Inlet High Temperature Limit Schedule Name
+  ,                                       !- Heat Recovery Leaving Temperature Setpoint Node Name
+  General;                                !- End-Use Subcategory
 
 OS:Curve:Biquadratic,
   {7a3bb7d2-aac5-41ff-8cd1-c534a0f33c34}, !- Handle
@@ -8168,6 +8179,7 @@ OS:PlantLoop,
   {5c3724fe-3ea2-4e21-9bbe-17e73d80d211}, !- Handle
   Condenser Water Loop,                   !- Name
   ,                                       !- Fluid Type
+  0,                                      !- Glycol Concentration
   ,                                       !- User Defined Fluid Type
   ,                                       !- Plant Equipment Operation Heating Load
   ,                                       !- Plant Equipment Operation Cooling Load
@@ -8186,10 +8198,23 @@ OS:PlantLoop,
   ,                                       !- Demand Side Branch List Name
   ,                                       !- Demand Side Connector List Name
   Optimal,                                !- Load Distribution Scheme
-  ,                                       !- Availability Manager List Name
+  {9737e8cd-be9f-4717-aeee-b6a6b221e3c0}, !- Availability Manager List Name
   ,                                       !- Plant Loop Demand Calculation Scheme
   ,                                       !- Common Pipe Simulation
-  ;                                       !- Pressure Simulation Type
+  ,                                       !- Pressure Simulation Type
+  ,                                       !- Plant Equipment Operation Heating Load Schedule
+  ,                                       !- Plant Equipment Operation Cooling Load Schedule
+  ,                                       !- Primary Plant Equipment Operation Scheme Schedule
+  ,                                       !- Component Setpoint Operation Scheme Schedule
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter Name
+  ,                                       !- Supply Mixer Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {9737e8cd-be9f-4717-aeee-b6a6b221e3c0}, !- Handle
+  Condenser Water Loop AvailabilityManagerAssignmentList, !- Name
+  ;                                       !- Availability Manager Name 1
 
 OS:Sizing:Plant,
   {f6fd19a8-baee-4018-b95a-9765bcb1e83b}, !- Handle
@@ -8345,7 +8370,10 @@ OS:Pump:ConstantSpeed,
   ,                                       !- Impeller Diameter {m}
   ,                                       !- Rotational Speed {rev/min}
   ,                                       !- Zone
-  ;                                       !- Skin Loss Radiative Fraction
+  ,                                       !- Skin Loss Radiative Fraction
+  PowerPerFlowPerPressure,                !- Design Power Sizing Method
+  348701.1,                               !- Design Electric Power per Unit Flow Rate {W/(m3/s)}
+  1.282051282;                            !- Design Shaft Power per Unit Flow Rate per Unit Head {W-s/m3-Pa}
 
 OS:CoolingTower:SingleSpeed,
   {ef5bf89a-4d8b-4435-aab8-f38a4bed3aa2}, !- Handle
@@ -8376,7 +8404,16 @@ OS:CoolingTower:SingleSpeed,
   MinimalCell,                            !- Cell Control
   0.33,                                   !- Cell Minimum  Water Flow Rate Fraction
   2.5,                                    !- Cell Maximum Water Flow Rate Fraction
-  1;                                      !- Sizing Factor
+  1,                                      !- Sizing Factor
+  0.1,                                    !- Free Convection Air Flow Rate Sizing Factor
+  0.1,                                    !- Free Convection U-Factor Times Area Value Sizing Factor
+  1.25,                                   !- Heat Rejection Capacity and Nominal Capacity Sizing Ratio
+  0.1,                                    !- Free Convection Nominal Capacity Sizing Factor
+  35.0,                                   !- Design Inlet Air Dry-Bulb Temperature {C}
+  25.6,                                   !- Design Inlet Air Wet-Bulb Temperature {C}
+  Autosize,                               !- Design Approach Temperature {deltaC}
+  Autosize,                               !- Design Range Temperature {deltaC}
+  General;                                !- End-Use Subcategory
 
 OS:Pipe:Adiabatic,
   {e24aa3b1-99cf-43b2-8654-8316eb96c646}, !- Handle
@@ -9230,7 +9267,7 @@ OS:AirLoopHVAC,
   VAV with Reheat,                        !- Name
   ,                                       !- Controller List Name
   {d352f6c7-bf87-435f-9e8d-cf84d7436989}, !- Availability Schedule
-  {768fcaa3-8a7a-4e50-84bb-4af04539d27c}, !- Availability Manager
+  {ff872991-594f-408a-a6bc-0814d8949eef}, !- Availability Manager List Name
   AutoSize,                               !- Design Supply Air Flow Rate {m3/s}
   ,                                       !- Branch List Name
   ,                                       !- Connector List Name
@@ -9239,7 +9276,17 @@ OS:AirLoopHVAC,
   {54f12be1-3b68-4454-a669-e35fbbafe45f}, !- Demand Side Inlet Node A
   {1ce7e2cb-0848-4e50-81e9-cc3e8163b6f3}, !- Supply Side Outlet Node A
   ,                                       !- Demand Side Inlet Node B
-  ;                                       !- Supply Side Outlet Node B
+  ,                                       !- Supply Side Outlet Node B
+  ,                                       !- Return Air Bypass Flow Temperature Setpoint Schedule Name
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter A Name
+  ,                                       !- Demand Splitter B Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {ff872991-594f-408a-a6bc-0814d8949eef}, !- Handle
+  VAV with Reheat AvailabilityManagerAssignmentList, !- Name
+  {768fcaa3-8a7a-4e50-84bb-4af04539d27c}; !- Availability Manager Name 1
 
 OS:Node,
   {a4460cdb-9f84-4fd6-bb0e-2aafc94e657d}, !- Handle
@@ -10164,7 +10211,7 @@ OS:AirLoopHVAC,
   VAV with Reheat 1,                      !- Name
   ,                                       !- Controller List Name
   {1abd6a35-aa55-4510-94dc-3f1ec492df23}, !- Availability Schedule
-  {af46423a-7e26-4ebd-afbb-eb47e3c85c81}, !- Availability Manager
+  {5076c756-b242-471a-add1-251a92808238}, !- Availability Manager List Name
   AutoSize,                               !- Design Supply Air Flow Rate {m3/s}
   ,                                       !- Branch List Name
   ,                                       !- Connector List Name
@@ -10173,7 +10220,17 @@ OS:AirLoopHVAC,
   {abf94d9e-67f2-4204-85d7-5ae5f116ac0f}, !- Demand Side Inlet Node A
   {3fbafda5-01d3-4ace-8418-0bc59f7c6499}, !- Supply Side Outlet Node A
   ,                                       !- Demand Side Inlet Node B
-  ;                                       !- Supply Side Outlet Node B
+  ,                                       !- Supply Side Outlet Node B
+  ,                                       !- Return Air Bypass Flow Temperature Setpoint Schedule Name
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter A Name
+  ,                                       !- Demand Splitter B Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {5076c756-b242-471a-add1-251a92808238}, !- Handle
+  VAV with Reheat 1 AvailabilityManagerAssignmentList, !- Name
+  {af46423a-7e26-4ebd-afbb-eb47e3c85c81}; !- Availability Manager Name 1
 
 OS:Node,
   {b397b46e-cc7e-4083-af8d-9cde433a657a}, !- Handle
@@ -11112,7 +11169,7 @@ OS:AirLoopHVAC,
   VAV with Reheat 2,                      !- Name
   ,                                       !- Controller List Name
   {2b5fdcaf-4992-4d53-8dc9-0bd840a8d4bf}, !- Availability Schedule
-  {6825cbd1-9216-4894-9672-3d948e57d3c5}, !- Availability Manager
+  {6a232035-ed56-4036-bdd7-fadaa5573978}, !- Availability Manager List Name
   AutoSize,                               !- Design Supply Air Flow Rate {m3/s}
   ,                                       !- Branch List Name
   ,                                       !- Connector List Name
@@ -11121,7 +11178,17 @@ OS:AirLoopHVAC,
   {694e5969-e389-4b79-852a-6b1bf43e1164}, !- Demand Side Inlet Node A
   {280207f1-6fdd-4658-9008-1c14e4688e5c}, !- Supply Side Outlet Node A
   ,                                       !- Demand Side Inlet Node B
-  ;                                       !- Supply Side Outlet Node B
+  ,                                       !- Supply Side Outlet Node B
+  ,                                       !- Return Air Bypass Flow Temperature Setpoint Schedule Name
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter A Name
+  ,                                       !- Demand Splitter B Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {6a232035-ed56-4036-bdd7-fadaa5573978}, !- Handle
+  VAV with Reheat 2 AvailabilityManagerAssignmentList, !- Name
+  {6825cbd1-9216-4894-9672-3d948e57d3c5}; !- Availability Manager Name 1
 
 OS:Node,
   {3c7041de-c01d-443b-ad49-ef6362943a74}, !- Handle
@@ -12059,6 +12126,7 @@ OS:PlantLoop,
   {d18dcf38-3115-4403-aed4-45785bb0e431}, !- Handle
   Main Service Water Loop,                !- Name
   ,                                       !- Fluid Type
+  0,                                      !- Glycol Concentration
   ,                                       !- User Defined Fluid Type
   ,                                       !- Plant Equipment Operation Heating Load
   ,                                       !- Plant Equipment Operation Cooling Load
@@ -12077,10 +12145,23 @@ OS:PlantLoop,
   ,                                       !- Demand Side Branch List Name
   ,                                       !- Demand Side Connector List Name
   Optimal,                                !- Load Distribution Scheme
-  ,                                       !- Availability Manager List Name
+  {32b72833-671e-4160-8745-8ed0369c8671}, !- Availability Manager List Name
   ,                                       !- Plant Loop Demand Calculation Scheme
   ,                                       !- Common Pipe Simulation
-  ;                                       !- Pressure Simulation Type
+  ,                                       !- Pressure Simulation Type
+  ,                                       !- Plant Equipment Operation Heating Load Schedule
+  ,                                       !- Plant Equipment Operation Cooling Load Schedule
+  ,                                       !- Primary Plant Equipment Operation Scheme Schedule
+  ,                                       !- Component Setpoint Operation Scheme Schedule
+  ,                                       !- Demand Mixer Name
+  ,                                       !- Demand Splitter Name
+  ,                                       !- Supply Mixer Name
+  ;                                       !- Supply Splitter Name
+
+OS:AvailabilityManagerAssignmentList,
+  {32b72833-671e-4160-8745-8ed0369c8671}, !- Handle
+  Main Service Water Loop AvailabilityManagerAssignmentList, !- Name
+  ;                                       !- Availability Manager Name 1
 
 OS:Sizing:Plant,
   {10c063ee-b8aa-4e28-b0eb-9078c7ad5033}, !- Handle
@@ -12278,7 +12359,10 @@ OS:Pump:ConstantSpeed,
   ,                                       !- Impeller Diameter {m}
   ,                                       !- Rotational Speed {rev/min}
   ,                                       !- Zone
-  ;                                       !- Skin Loss Radiative Fraction
+  ,                                       !- Skin Loss Radiative Fraction
+  PowerPerFlowPerPressure,                !- Design Power Sizing Method
+  348701.1,                               !- Design Electric Power per Unit Flow Rate {W/(m3/s)}
+  1.282051282;                            !- Design Shaft Power per Unit Flow Rate per Unit Head {W-s/m3-Pa}
 
 OS:Node,
   {ce2379c2-9d6b-4e5e-9222-5837255906f3}, !- Handle
@@ -12358,7 +12442,10 @@ OS:WaterHeater:Mixed,
   1,                                      !- Source Side Effectiveness
   autosize,                               !- Use Side Design Flow Rate {m3/s}
   autosize,                               !- Source Side Design Flow Rate {m3/s}
-  1.5;                                    !- Indirect Water Heating Recovery Time {hr}
+  1.5,                                    !- Indirect Water Heating Recovery Time {hr}
+  IndirectHeatPrimarySetpoint,            !- Source Side Flow Control Mode
+  ,                                       !- Indirect Alternate Setpoint Temperature Schedule Name
+  General;                                !- End-Use Subcategory
 
 OS:Schedule:Ruleset,
   {b5286c13-eee1-43ba-83e1-80d086790d93}, !- Handle
@@ -14626,7 +14713,28 @@ OS:AvailabilityManager:NightCycle,
   ,                                       !- Fan Schedule
   CycleOnAny,                             !- Control Type
   1,                                      !- Thermostat Tolerance {deltaC}
-  3600;                                   !- Cycling Run Time {s}
+  ,                                       !- Cycling Run Time Control Type
+  ,                                       !- Cycling Run Time {s}
+  {0bf1564b-90e0-43b5-8fb5-c64cc5561b68}, !- Control Zone or Zone List Name
+  {b3f730c1-4252-483f-8b97-75572b97147c}, !- Cooling Control Zone or Zone List Name
+  {7e43d107-0cfd-4eb8-bf1a-a81a53820b8d}, !- Heating Control Zone or Zone List Name
+  {77119581-3a6b-4656-8749-08e85aaf0b96}; !- Heating Zone Fans Only Zone or Zone List Name
+
+OS:ModelObjectList,
+  {0bf1564b-90e0-43b5-8fb5-c64cc5561b68}, !- Handle
+  Availability Manager Night Cycle 1 Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {b3f730c1-4252-483f-8b97-75572b97147c}, !- Handle
+  Availability Manager Night Cycle 1 Cooling Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {7e43d107-0cfd-4eb8-bf1a-a81a53820b8d}, !- Handle
+  Availability Manager Night Cycle 1 Heating Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {77119581-3a6b-4656-8749-08e85aaf0b96}, !- Handle
+  Availability Manager Night Cycle 1 Heating Zone Fans Only Zone List; !- Name
 
 OS:Schedule:Ruleset,
   {d352f6c7-bf87-435f-9e8d-cf84d7436989}, !- Handle
@@ -14921,7 +15029,28 @@ OS:AvailabilityManager:NightCycle,
   ,                                       !- Fan Schedule
   CycleOnAny,                             !- Control Type
   1,                                      !- Thermostat Tolerance {deltaC}
-  3600;                                   !- Cycling Run Time {s}
+  ,                                       !- Cycling Run Time Control Type
+  ,                                       !- Cycling Run Time {s}
+  {18f283a6-69bc-4d9a-92e0-d6ac8114cc95}, !- Control Zone or Zone List Name
+  {797b60b9-9075-4a3f-a557-b360da217905}, !- Cooling Control Zone or Zone List Name
+  {582b1ab2-08b5-48e2-bce5-788195c88d22}, !- Heating Control Zone or Zone List Name
+  {a9d7a076-78ac-4b16-a7e3-a485c479d912}; !- Heating Zone Fans Only Zone or Zone List Name
+
+OS:ModelObjectList,
+  {18f283a6-69bc-4d9a-92e0-d6ac8114cc95}, !- Handle
+  Availability Manager Night Cycle 2 Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {797b60b9-9075-4a3f-a557-b360da217905}, !- Handle
+  Availability Manager Night Cycle 2 Cooling Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {582b1ab2-08b5-48e2-bce5-788195c88d22}, !- Handle
+  Availability Manager Night Cycle 2 Heating Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {a9d7a076-78ac-4b16-a7e3-a485c479d912}, !- Handle
+  Availability Manager Night Cycle 2 Heating Zone Fans Only Zone List; !- Name
 
 OS:Schedule:Ruleset,
   {1abd6a35-aa55-4510-94dc-3f1ec492df23}, !- Handle
@@ -15216,7 +15345,28 @@ OS:AvailabilityManager:NightCycle,
   ,                                       !- Fan Schedule
   CycleOnAny,                             !- Control Type
   1,                                      !- Thermostat Tolerance {deltaC}
-  3600;                                   !- Cycling Run Time {s}
+  ,                                       !- Cycling Run Time Control Type
+  ,                                       !- Cycling Run Time {s}
+  {fc5d2cf0-149d-4e77-8c32-4b7d0701a639}, !- Control Zone or Zone List Name
+  {3aae6bbe-b145-4f65-8d7a-34988a6c1169}, !- Cooling Control Zone or Zone List Name
+  {55ded700-01c9-450e-8ce4-d0edec56925c}, !- Heating Control Zone or Zone List Name
+  {392822a9-34eb-4ff1-988c-f6e4edc45bab}; !- Heating Zone Fans Only Zone or Zone List Name
+
+OS:ModelObjectList,
+  {fc5d2cf0-149d-4e77-8c32-4b7d0701a639}, !- Handle
+  Availability Manager Night Cycle 3 Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {3aae6bbe-b145-4f65-8d7a-34988a6c1169}, !- Handle
+  Availability Manager Night Cycle 3 Cooling Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {55ded700-01c9-450e-8ce4-d0edec56925c}, !- Handle
+  Availability Manager Night Cycle 3 Heating Control Zone List; !- Name
+
+OS:ModelObjectList,
+  {392822a9-34eb-4ff1-988c-f6e4edc45bab}, !- Handle
+  Availability Manager Night Cycle 3 Heating Zone Fans Only Zone List; !- Name
 
 OS:Schedule:Ruleset,
   {2b5fdcaf-4992-4d53-8dc9-0bd840a8d4bf}, !- Handle
@@ -15608,80 +15758,6 @@ OS:Curve:Quadratic,
   0,                                      !- Minimum Value of x
   1;                                      !- Maximum Value of x
 
-OS:SizingPeriod:DesignDay,
-  {1ec40793-2c7c-4b65-bc13-d107baf5665f}, !- Handle
-  Montreal Int'l Ann Htg 99.6% Condns DB, !- Name
-  -23.7,                                  !- Maximum Dry-Bulb Temperature {C}
-  0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
-  -23.7,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
-  100893,                                 !- Barometric Pressure {Pa}
-  3.9,                                    !- Wind Speed {m/s}
-  260,                                    !- Wind Direction {deg}
-  0,                                      !- Sky Clearness
-  0,                                      !- Rain Indicator
-  0,                                      !- Snow Indicator
-  21,                                     !- Day of Month
-  1,                                      !- Month
-  WinterDesignDay,                        !- Day Type
-  0,                                      !- Daylight Saving Time Indicator
-  Wetbulb,                                !- Humidity Indicating Type
-  ,                                       !- Humidity Indicating Day Schedule Name
-  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
-  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
-  ASHRAEClearSky;                         !- Solar Model Indicator
-
-OS:SizingPeriod:DesignDay,
-  {447d9c6b-9b01-49aa-8a3c-8bea9e297a86}, !- Handle
-  Montreal Int'l Ann Clg .4% Condns WB=>MDB, !- Name
-  28.1,                                   !- Maximum Dry-Bulb Temperature {C}
-  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
-  23.2,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
-  100893,                                 !- Barometric Pressure {Pa}
-  4.9,                                    !- Wind Speed {m/s}
-  220,                                    !- Wind Direction {deg}
-  0,                                      !- Sky Clearness
-  0,                                      !- Rain Indicator
-  0,                                      !- Snow Indicator
-  21,                                     !- Day of Month
-  7,                                      !- Month
-  SummerDesignDay,                        !- Day Type
-  0,                                      !- Daylight Saving Time Indicator
-  Wetbulb,                                !- Humidity Indicating Type
-  ,                                       !- Humidity Indicating Day Schedule Name
-  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
-  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
-  ASHRAETau,                              !- Solar Model Indicator
-  ,                                       !- Beam Solar Day Schedule Name
-  ,                                       !- Diffuse Solar Day Schedule Name
-  0.465,                                  !- ASHRAE Taub {dimensionless}
-  1.966;                                  !- ASHRAE Taud {dimensionless}
-
-OS:SizingPeriod:DesignDay,
-  {b6654cce-7489-422e-b4e4-62ebf71d6783}, !- Handle
-  Montreal Int'l Ann Clg .4% Condns DB=>MWB, !- Name
-  30,                                     !- Maximum Dry-Bulb Temperature {C}
-  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
-  22.1,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
-  100893,                                 !- Barometric Pressure {Pa}
-  4.9,                                    !- Wind Speed {m/s}
-  220,                                    !- Wind Direction {deg}
-  0,                                      !- Sky Clearness
-  0,                                      !- Rain Indicator
-  0,                                      !- Snow Indicator
-  21,                                     !- Day of Month
-  7,                                      !- Month
-  SummerDesignDay,                        !- Day Type
-  0,                                      !- Daylight Saving Time Indicator
-  Wetbulb,                                !- Humidity Indicating Type
-  ,                                       !- Humidity Indicating Day Schedule Name
-  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
-  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
-  ASHRAETau,                              !- Solar Model Indicator
-  ,                                       !- Beam Solar Day Schedule Name
-  ,                                       !- Diffuse Solar Day Schedule Name
-  0.465,                                  !- ASHRAE Taub {dimensionless}
-  1.966;                                  !- ASHRAE Taud {dimensionless}
-
 OS:Rendering:Color,
   {78ae45f9-25a2-4856-a98a-14251a105f2d}, !- Handle
   Rendering Color 11,                     !- Name
@@ -16024,4 +16100,412 @@ OS:Rendering:Color,
   255,                                    !- Rendering Red Value
   255,                                    !- Rendering Green Value
   0;                                      !- Rendering Blue Value
+
+OS:StandardsInformation:Material,
+  {26d96cf2-ab4d-42b9-b5a9-f5ab95986eec}, !- Handle
+  {0efa0d45-bcd8-4c96-bc2b-f42d89c3c238}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {f71e282f-ee34-4f7a-a5f7-01fbb391edfb}, !- Handle
+  {b391a24e-1f7e-4d69-a629-43abe927e54b}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {c9fc7bc2-2c66-466c-9a6e-e6762012934d}, !- Handle
+  {d8bb28f0-efa4-4355-b5dc-e88cec217c14}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {98220484-5b18-4b37-bea2-39f587e8ba8c}, !- Handle
+  {2889994a-65cb-46de-b581-ce92ceea6c98}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {dfc527c9-1855-4f64-8d0c-1fcf91a5dff7}, !- Handle
+  {707600c0-0a96-49cb-970a-530bc23d5fea}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {bc048d07-dc0f-415c-8404-81290eb9e31b}, !- Handle
+  {5006594a-411a-41e7-9243-392f1bcdcc74}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {908e9597-58e0-47af-b694-2606c397906e}, !- Handle
+  {e1b347cd-9d3c-486c-a39d-8e8aa008915c}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {e007abd9-b1f0-4701-83e8-1867009fcf3f}, !- Handle
+  {b88dffd0-3df1-4905-a7be-ee15e5e6991c}; !- Construction Name
+
+OS:StandardsInformation:Construction,
+  {104484d0-4ece-41e9-a273-75dafc0318b1}, !- Handle
+  {60143d2f-b303-43a5-9bb7-de2c18cc7916}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {57fe6d43-22dc-4363-a7ba-061239b62c30}, !- Handle
+  {a9b5e078-06ca-41b5-a875-041e6e54bc9c}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {0dd91f30-0aaa-4a7b-a211-157471dd1f38}, !- Handle
+  {c2464840-9c0a-460a-bc4a-d049af76ad76}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {d1e6c01c-2c65-4fdf-9115-ce44ffaa25b6}, !- Handle
+  {bb3ac871-27b7-42e2-8875-993610d1bce2}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {37eeeddf-f8e5-4d06-ae71-75feab144759}, !- Handle
+  {96654c35-eae0-4eb9-a205-cc48578d847f}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {469e1dfa-975b-426f-8fd4-9839a4e52cca}, !- Handle
+  {7c9256ae-28e8-4e55-9af0-7f1fdfc1ce9c}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {067e00c2-0c71-4a10-a3ee-83ebb6322de9}, !- Handle
+  {88bee30a-1e82-4cdb-aaad-8db2273b67bf}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {539320c2-b18c-47d2-b29e-dba5895bf7cc}, !- Handle
+  {0dc5af21-730d-474f-8f7b-cb8a91313548}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {63f03e71-6251-4982-a801-69bc7019b133}, !- Handle
+  {10cb3f9e-4c38-49e4-aab4-e001cc8def77}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {2c5379ec-e020-4c50-a7c8-5e2e200247c9}, !- Handle
+  {ae371330-fca2-48eb-85a6-8993acac8766}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {91ef206f-8573-4200-a736-be2d0a8c935c}, !- Handle
+  {77a31708-0d99-4ec6-9995-a992f522241f}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {d551a743-ffd1-4942-95e9-9de985f128bf}, !- Handle
+  {4404a987-7066-48e2-9691-8d8f81e1bdac}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {02288edc-63ad-43be-814e-af2920e91ab8}, !- Handle
+  {54cdc68e-4c0d-442e-bbc4-1a0b9e7c585d}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {9798bbf7-d59b-4bca-983c-6ba0eb519186}, !- Handle
+  {d659af9c-cd57-4733-910f-dd559ff2b033}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {15cfdb01-2eab-43ec-93ce-ccef8c4e5aa6}, !- Handle
+  {f957b8ba-8538-4a99-9674-a33f18d28232}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {faa5fd01-dc6c-4ab3-9095-e5be04efcbf1}, !- Handle
+  {301dd415-5420-4b7f-9ede-bb8b9f189c86}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {6c6cd1e3-e47e-4d3c-82e6-3721bf52b6e0}, !- Handle
+  {58fe5a0b-f0b6-4e4a-8afe-893e138978a3}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {060b71e4-a6b2-4400-9911-e28a7438b3e5}, !- Handle
+  {5e85d652-5633-4535-9c55-1e9d4ec75e18}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {1f4fc8bf-a030-423e-9f7a-e871b17e139b}, !- Handle
+  {9c084d70-79da-4d2d-8032-f91e656815c3}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {3829a574-9b5c-4973-b7f5-685b4b96eec2}, !- Handle
+  {e21495cc-097c-4a0e-a5aa-4a9211df92fe}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {ec201383-50ff-4db0-92f9-364cb2f980bf}, !- Handle
+  {d7d266e5-a6d7-408f-a065-abd4c34b4016}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {cc71751c-46fc-432e-89d3-9dcf94b7889b}, !- Handle
+  {7af1c66f-0711-409c-bf80-c26bdc02a0c2}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {9d41e7ed-874d-4f4a-9fc8-3d8e025f1b58}, !- Handle
+  {c7c9de6c-5ff4-4248-bd88-a2fb4691764f}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {b19bd554-4151-4a9c-a7f1-971243302988}, !- Handle
+  {d8b4a54a-5579-4ace-8d88-c0cca5a97c58}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {6bf2a3db-4124-4ce6-a24b-d77f3069f130}, !- Handle
+  {02e7d286-c8b7-40c4-ba9d-63d2fe81ea9d}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {5f550bdd-dc1b-49bf-9ac7-fe1aebf115c4}, !- Handle
+  {6ca43d68-60f5-48b4-90c8-df994b745308}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {3e23a29d-085c-4538-9a02-e66f53679e0b}, !- Handle
+  {b67dbce1-5daa-4167-b227-4bf3d6a3ffe1}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {b548e470-8322-4853-9c71-1f45c7d8eb07}, !- Handle
+  {0f6c9977-83a2-4070-b244-992c1ccbc800}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {dd337935-b832-42cd-9f29-0f7a120fa8b0}, !- Handle
+  {ee58626e-a180-4d49-98c2-7a72d96419ed}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {d3edb49f-5784-41d4-8419-ab6e41d77525}, !- Handle
+  {9c68170c-1d87-4173-a848-98c9e382d46a}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {a70d8318-56f9-4b73-80c1-5206fbb2bae7}, !- Handle
+  {6a3d90c1-a9c5-474c-ab04-8f6eb9f57b99}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {cc1a94df-647b-4b7e-8ebd-14a60535fcce}, !- Handle
+  {9c2b37b1-d2d9-464f-b457-67061cb7eb5a}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {ed190933-413f-4222-893c-29dfb044f43d}, !- Handle
+  {ff762e4a-b3dc-4ea4-89c5-b84461742c1c}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {f46a7955-2c9a-40fe-9b11-8ee7ea5a34ab}, !- Handle
+  {f9d8f884-8335-4d1a-889c-ab39535832ba}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {032407d5-2365-4f7a-ab58-1aaa2597e37b}, !- Handle
+  {771912a1-7bbf-4130-95b9-bb831c346c50}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {f1fed59f-79f1-4c37-b37a-020ed118adea}, !- Handle
+  {487192a7-2d46-4181-93b5-58cbae3b519d}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {567d9800-c854-45d7-8180-d647da519af2}, !- Handle
+  {ddc30a63-d83b-486b-ae85-a2077bb33ea8}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {69643a9d-d21e-4015-a50f-16de77d5c299}, !- Handle
+  {e80ac031-34ab-4ab0-a2ee-c06672a62be6}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {4dd58421-c175-4eee-b6c5-c0a887bbe125}, !- Handle
+  {d2fde727-95a4-4cdb-bf2a-5ee178a847b4}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {0233f1f1-2a5d-4831-a529-c9c7444d977f}, !- Handle
+  {64c36262-72b2-451f-a238-ab578375bdec}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {e1841738-7693-4aac-9e80-1526fa08d92d}, !- Handle
+  {3b7c8617-137c-425e-90f9-b17f726a9442}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {120e4fc8-b0bb-4cc6-ae90-23d7414556ea}, !- Handle
+  {10b3add3-3c5b-435b-8f50-9324c725934f}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {2e814d32-1c32-4b97-9671-0d182b6f4af3}, !- Handle
+  {4716b539-598f-469b-a49b-f654e852cfbe}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {1d0c1d6d-57c6-4807-a815-fd1ae66fc6aa}, !- Handle
+  {17922470-9aaa-4ed9-92cb-9bfbd4fc9df1}; !- Material Name
+
+OS:StandardsInformation:Material,
+  {8b18082b-ec5a-43eb-8fa8-ed611a79e9cf}, !- Handle
+  {86cd745e-0ee7-40b4-8e77-d183789a9a6e}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {38ef878d-47e7-4f70-80cf-c3130ddb3c8f}, !- Handle
+  {a977b188-1feb-451e-b9b8-7579c8c89c82}; !- Construction Name
+
+OS:StandardsInformation:Material,
+  {6113e903-3c30-49d8-ac6d-cc5f5d738d7d}, !- Handle
+  {84740c0a-1a8e-421d-9905-de450158b723}; !- Material Name
+
+OS:StandardsInformation:Construction,
+  {ca6d3c78-f48b-4a85-961b-b50c65eb14de}, !- Handle
+  {402a7b0a-368d-4b60-82b1-1ec83a01dac1}; !- Construction Name
+
+OS:WeatherFile,
+  {1208542b-7d47-4d2a-b6c5-4aa73b3d5dc3}, !- Handle
+  Montreal Int'l,                         !- City
+  PQ,                                     !- State Province Region
+  CAN,                                    !- Country
+  WYEC2-B-94792,                          !- Data Source
+  716270,                                 !- WMO Number
+  45.47,                                  !- Latitude {deg}
+  -73.75,                                 !- Longitude {deg}
+  -5,                                     !- Time Zone {hr}
+  36,                                     !- Elevation {m}
+  file:CAN_PQ_Montreal.Intl.AP.716270_CWEC.epw, !- Url
+  3C3F39E2;                               !- Checksum
+
+OS:SizingPeriod:DesignDay,
+  {93c7b5a0-123b-46bf-8355-a23fdf590dc9}, !- Handle
+  Montreal Int'l Ann Htg 99.6% Condns DB, !- Name
+  -23.7,                                  !- Maximum Dry-Bulb Temperature {C}
+  0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
+  -23.7,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  3.9,                                    !- Wind Speed {m/s}
+  260,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  1,                                      !- Month
+  WinterDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAEClearSky;                         !- Solar Model Indicator
+
+OS:SizingPeriod:DesignDay,
+  {d65be8f8-88f8-467f-ac5e-2187e8292a41}, !- Handle
+  Montreal Int'l Ann Hum_n 99.6% Condns DP=>MCDB, !- Name
+  -23,                                    !- Maximum Dry-Bulb Temperature {C}
+  0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
+  -30.5,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  3.9,                                    !- Wind Speed {m/s}
+  260,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  1,                                      !- Month
+  WinterDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Dewpoint,                               !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAEClearSky;                         !- Solar Model Indicator
+
+OS:SizingPeriod:DesignDay,
+  {98310d86-c551-4cc1-beac-e45358159b1b}, !- Handle
+  Montreal Int'l Ann Htg Wind 99.6% Condns WS=>MCDB, !- Name
+  -5.3,                                   !- Maximum Dry-Bulb Temperature {C}
+  0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
+  -5.3,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  12.9,                                   !- Wind Speed {m/s}
+  260,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  1,                                      !- Month
+  WinterDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAEClearSky;                         !- Solar Model Indicator
+
+OS:SizingPeriod:DesignDay,
+  {d52cc2dc-c7f1-431c-8239-c1c5b9218464}, !- Handle
+  Montreal Int'l Ann Clg .4% Condns DB=>MWB, !- Name
+  30,                                     !- Maximum Dry-Bulb Temperature {C}
+  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
+  22.1,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  4.9,                                    !- Wind Speed {m/s}
+  220,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  7,                                      !- Month
+  SummerDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAETau,                              !- Solar Model Indicator
+  ,                                       !- Beam Solar Day Schedule Name
+  ,                                       !- Diffuse Solar Day Schedule Name
+  0.465,                                  !- ASHRAE Taub {dimensionless}
+  1.966;                                  !- ASHRAE Taud {dimensionless}
+
+OS:SizingPeriod:DesignDay,
+  {d32af785-f6a4-46a9-9728-395707225e8c}, !- Handle
+  Montreal Int'l Ann Clg .4% Condns WB=>MDB, !- Name
+  28.1,                                   !- Maximum Dry-Bulb Temperature {C}
+  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
+  23.2,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  4.9,                                    !- Wind Speed {m/s}
+  220,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  7,                                      !- Month
+  SummerDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAETau,                              !- Solar Model Indicator
+  ,                                       !- Beam Solar Day Schedule Name
+  ,                                       !- Diffuse Solar Day Schedule Name
+  0.465,                                  !- ASHRAE Taub {dimensionless}
+  1.966;                                  !- ASHRAE Taud {dimensionless}
+
+OS:SizingPeriod:DesignDay,
+  {554b6fd1-2638-4db5-9c9c-41ab693aa353}, !- Handle
+  Montreal Int'l Ann Clg .4% Condns DP=>MDB, !- Name
+  26,                                     !- Maximum Dry-Bulb Temperature {C}
+  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
+  21.6,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  4.9,                                    !- Wind Speed {m/s}
+  220,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  7,                                      !- Month
+  SummerDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Dewpoint,                               !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAETau,                              !- Solar Model Indicator
+  ,                                       !- Beam Solar Day Schedule Name
+  ,                                       !- Diffuse Solar Day Schedule Name
+  0.465,                                  !- ASHRAE Taub {dimensionless}
+  1.966;                                  !- ASHRAE Taud {dimensionless}
+
+OS:SizingPeriod:DesignDay,
+  {6d193c05-5774-42e9-8282-87e470b93c3f}, !- Handle
+  Montreal Int'l Ann Clg .4% Condns Enth=>MDB, !- Name
+  28.1,                                   !- Maximum Dry-Bulb Temperature {C}
+  9.3,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
+  69300,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  100893,                                 !- Barometric Pressure {Pa}
+  4.9,                                    !- Wind Speed {m/s}
+  220,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  7,                                      !- Month
+  SummerDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Enthalpy,                               !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAETau,                              !- Solar Model Indicator
+  ,                                       !- Beam Solar Day Schedule Name
+  ,                                       !- Diffuse Solar Day Schedule Name
+  0.465,                                  !- ASHRAE Taub {dimensionless}
+  1.966;                                  !- ASHRAE Taud {dimensionless}
 
