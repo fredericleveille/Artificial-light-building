@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2018.11.28 10:32,
+Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2019.01.08 10:14,
    ************* Beginning Zone Sizing Calculations
    ** Warning ** ProcessScheduleInput: Schedule:Day:Interval="ECONOMIZER MAX OA FRACTION 100 PCT DEFAULT", Blank Schedule Type Limits Name input -- will not be validated.
    ** Warning ** ProcessScheduleInput: Schedule:Day:Interval="SCHEDULE DAY 1", Blank Schedule Type Limits Name input -- will not be validated.
@@ -108,6 +108,8 @@ Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2018.11.28 10:32,
    **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
    ** Warning ** Calculated design heating load for zone=SP-CORE_MID SYS-6 FLR-3 SCH-A HPLCMT-CORE ZN is zero.
    **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=SP-CORE_TOP SYS-6 FLR-1 SCH-A HPLCMT-CORE ZN is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
    ** Warning ** Calculated design heating load for zone=SP-PERIMETER_TOP_ZN_1 SYS-6 FLR-1 SCH-A HPLCMT-SOUTH ZN is zero.
    **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
    ** Warning ** Calculated design heating load for zone=SP-PERIMETER_TOP_ZN_2 SYS-6 FLR-1 SCH-A HPLCMT-EAST ZN is zero.
@@ -147,6 +149,8 @@ Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2018.11.28 10:32,
    **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = AIR TERMINAL SINGLE DUCT VAV REHEAT 11
    ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
    **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = AIR TERMINAL SINGLE DUCT VAV REHEAT 14
+   ** Warning ** ManageSizing: Calculated Heating Design Air Flow Rate for System=VAV WITH REHEAT 3 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
    ************* Beginning Plant Sizing Calculations
    ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="CONTROLLER MECHANICAL VENTILATION 4
    **   ~~~   ** Cannot locate a matching DesignSpecification:OutdoorAir object for Zone="SP-CORE_TOP SYS-6 FLR-1 SCH-A HPLCMT-CORE ZN".
@@ -177,87 +181,36 @@ Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2018.11.28 10:32,
    ************* All Return Air Paths passed integrity testing
    ************* No node connection errors were found.
    ************* Beginning Simulation
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-CORE_MID SYS-6 FLR-3 SCH-A HPLCMT-CORE ZN" did not converge after 25 warmup days.
-   **   ~~~   ** See Warmup Convergence Information in .eio file for details.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 2.30E-002 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Min Temp Comparison = 0.28 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 0.0000 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 1.3208E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-CORE_TOP SYS-6 FLR-1 SCH-A HPLCMT-CORE ZN" did not converge after 25 warmup days.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 0.25 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Min Temp Comparison = 2.95E-003 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 3.6402E-005 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 1.7355E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-PERIMETER_MID_ZN_1 SYS-6 FLR-3 SCH-A HPLCMT-SOUTH ZN" did not converge after 25 warmup days.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 9.53E-002 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Min Temp Comparison = 0.31 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 3.1687E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 1.1318E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-PERIMETER_MID_ZN_2 SYS-6 FLR-3 SCH-A HPLCMT-EAST ZN" did not converge after 25 warmup days.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 0.13 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Min Temp Comparison = 0.43 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 1.3293E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 0.1319 vs Loads Convergence Tolerance=4.00E-002 - Fail Convergence
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-PERIMETER_MID_ZN_3 SYS-6 FLR-3 SCH-A HPLCMT-NORTH ZN" did not converge after 25 warmup days.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 4.59E-002 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Min Temp Comparison = 0.21 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 3.1687E-002 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 7.0792E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   ** Severe  ** CheckWarmupConvergence: Loads Initialization, Zone="SP-PERIMETER_MID_ZN_4 SYS-6 FLR-3 SCH-A HPLCMT-WEST ZN" did not converge after 25 warmup days.
-   **   ~~~   ** ...Environment(RunPeriod)="RUN PERIOD 1"
-   **   ~~~   ** ..Max Temp Comparison = 0.22 vs Temperature Convergence Tolerance=0.20 - Fail Convergence
-   **   ~~~   ** ..Min Temp Comparison = 0.19 vs Temperature Convergence Tolerance=0.20 - Pass Convergence
-   **   ~~~   ** ..Max Heat Load Comparison = 9.5950E-003 vs Loads Convergence Tolerance=4.00E-002 - Pass Convergence
-   **   ~~~   ** ..Max Cool Load Comparison = 5.3668E-002 vs Loads Convergence Tolerance=4.00E-002 - Fail Convergence
    ** Warning ** Processing Monthly Tabular Reports: Variable names not valid for this simulation
    **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual variables.
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/06 08:50 - 09:00
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/01 08:40 - 08:50
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
    **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on each max iteration exceeded.
-   ** Severe  ** FindRootSimpleController: Controller error for controller = "CONTROLLER WATER COIL 4"
-   **   ~~~   **  Environment=RUN PERIOD 1, at Simulation time=01/07 13:50 - 13:52
-   **   ~~~   **   Controller function is inconsistent with user specified controller action = Reverse action
-   **   ~~~   **   Actuator will be set to maximum action
-   **   ~~~   ** Controller control type=Temperature
-   **   ~~~   ** Controller temperature setpoint = 10.44 [C]
-   **   ~~~   ** Controller sensed temperature = 12.14 [C]
-   **   ~~~   ** Controller actuator mass flow rate set to 20.61 [kg/s]
-   **   ~~~   ** Controller actuator temperature = 7.00 [C]
-   **   ~~~   **   Note: Chilled water coils should be reverse action and the entering chilled
-   **   ~~~   **         water temperature (controller actuator temperature) should be below the setpoint temperature
-   **   ~~~   **   Note: Hot water coils should be normal action and the entering hot
-   **   ~~~   **         water temperature (controller actuator temperature) should be above the setpoint temperature
-   ** Warning ** Calculated Relative Humidity out of range (PsyRhFnTdbWPb) 
-   **   ~~~   **  Routine=CalcZoneDehumidifier, Environment=RUN PERIOD 1, at Simulation time=01/08 15:40 - 15:42
-   **   ~~~   **  Dry-Bulb= 23.70 Humidity Ratio= 1.926E-002 Calculated Relative Humidity [%]= 103.50
-   **   ~~~   ** Relative Humidity being reset to 100.0%
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/12 14:50 - 15:00
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/02 07:48 - 07:50
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for VAV WITH REHEAT 3, at RUN PERIOD 1, 01/20 23:40 - 23:50
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/25 09:40 - 09:50
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 09:18 - 09:20
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 02/13 15:40 - 15:50
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 09:24 - 09:26
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 02/24 16:00 - 16:05
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 09:30 - 09:32
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for VAV WITH REHEAT 3, at RUN PERIOD 1, 03/21 23:40 - 23:50
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 07/05 16:45 - 16:50
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 10:34 - 10:36
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 07/13 09:00 - 09:05
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 10:45 - 10:50
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 07/19 08:10 - 08:15
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/07 18:40 - 18:42
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for VAV WITH REHEAT 3, at RUN PERIOD 1, 10/12 06:40 - 06:50
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 12/11 13:10 - 13:20
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/08 08:38 - 08:40
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 12/20 10:20 - 10:30
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/08 10:00 - 10:05
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
-   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 12/27 14:10 - 14:20
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/08 12:20 - 12:30
+   **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/08 18:00 - 18:02
+   **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/09 19:06 - 19:08
+   **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
+   ** Warning ** SimHVAC: Maximum iterations (25) exceeded for all HVAC loops, at RUN PERIOD 1, 01/14 10:28 - 10:30
    **   ~~~   ** The solution for one or more of the Air Loop HVAC systems did not appear to converge
    ** Warning ** The resource referenced by LifeCycleCost:UsePriceEscalation= "U.S. AVG  COMMERCIAL-ELECTRICITY" has no energy cost. 
    **   ~~~   ** ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff.
@@ -270,43 +223,27 @@ Program Version,EnergyPlus, Version 8.9.0-eba93e8e1b, YMD=2018.11.28 10:32,
    ** Warning ** The resource referenced by LifeCycleCost:UsePriceEscalation= "U.S. AVG  COMMERCIAL-COAL" has no energy cost. 
    **   ~~~   ** ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff.
    ************* Simulation Error Summary *************
-   ************* There are 9 unused schedules in input.
-   ************* There are 9 unused week schedules in input.
-   ************* There are 24 unused day schedules in input.
+   ************* There are 12 unused schedules in input.
+   ************* There are 10 unused week schedules in input.
+   ************* There are 25 unused day schedules in input.
    ************* Use Output:Diagnostics,DisplayUnusedSchedules; to see them.
    *************
    ************* ===== Recurring Error Summary =====
    ************* The following recurring error messages occurred.
    *************
-   *************  ** Severe  ** FindRootSimpleController: Previous controller action error continues for controller = CONTROLLER WATER COIL 4
-   *************  **   ~~~   **   This error occurred 161 total times;
+   *************  ** Warning ** SimHVAC: Exceeding Maximum iterations for all HVAC loops, during RUN PERIOD 1 continues
+   *************  **   ~~~   **   This error occurred 451 total times;
    *************  **   ~~~   **   during Warmup 0 times;
    *************  **   ~~~   **   during Sizing 0 times.
-   *************
-   *************  ** Warning ** Calculated Relative Humidity out of range (PsyRhFnTdbWPb)
-   *************  **   ~~~   **   This error occurred 410 total times;
-   *************  **   ~~~   **   during Warmup 0 times;
-   *************  **   ~~~   **   during Sizing 0 times.
-   *************  **   ~~~   **   Max=108.482144 %  Min=101.001528 %
    *************
    *************
    ************* ===== Final Error Summary =====
    ************* The following error categories occurred.  Consider correcting or noting.
-   ************* Loads Initialization did not Converge
-   ************* ..1) very high thermal mass such as very thick concrete (solution: increase max number of warmup
-   ************* ..   days in the BUILDING object);
-   ************* ..2) moderate mass and inadequate space conditioning such that the building keeps getting warmer
-   ************* ..   and warmer on successive days (solution: add HVAC, check building thermal properties,
-   ************* ..   check if infiltration is included, make sure HVAC properly controlled);
-   ************* ..3) a soil layer modeled below the concrete slab - (solution remove this layer and read about
-   ************* ..   ground temperatures in the Auxiliary Programs document).
-   ************* ..4) unreasonable (too small) limits in the BUILDING object for temperature (.4 default) or
-   ************* ..   loads tolerances (.04 default)
    ************* Nominally Unused Constructions
    ************* ..The nominally unused constructions warning is provided to alert you to potential conditions that can cause
    ************* ..extra time during simulation. Each construction is calculated by the algorithm indicated in the HeatBalanceAlgorithm
    ************* ..object. You may remove the constructions indicated (when you use the DisplayExtraWarnings option).
    *************
-   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 6 Severe Errors.
-   ************* EnergyPlus Sizing Error Summary. During Sizing: 124 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 563 Warning; 169 Severe Errors; Elapsed Time=00hr 01min 41.21sec
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 126 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 606 Warning; 1 Severe Errors; Elapsed Time=00hr 02min 44.15sec

@@ -6003,14 +6003,12 @@ OS:PortList,
   {77372061-c1fc-4004-82b7-f411e9254904}, !- Handle
   Port List 15,                           !- Name
   {c8f47e88-befc-4da2-a3ef-dfd0a6bc1fe7}, !- HVAC Component
-  {600acb4a-f30b-44eb-a13b-43fc6e26f11e}, !- Port 1
-  {f41ba89e-6929-41bb-8b03-1de4155e53dc}; !- Port 2
+  {f41ba89e-6929-41bb-8b03-1de4155e53dc}; !- Port 1
 
 OS:PortList,
   {b00ee097-7f16-4b95-b088-c4b435ad3b72}, !- Handle
   Port List 16,                           !- Name
-  {c8f47e88-befc-4da2-a3ef-dfd0a6bc1fe7}, !- HVAC Component
-  {422c207c-6b94-476a-8796-7bae3c04194f}; !- Port 1
+  {c8f47e88-befc-4da2-a3ef-dfd0a6bc1fe7}; !- HVAC Component
 
 OS:Sizing:Zone,
   {2d236c7c-e05a-420f-9b54-6008094ce787}, !- Handle
@@ -6049,12 +6047,9 @@ OS:ZoneHVAC:EquipmentList,
   {5ce86d9f-9582-44df-83e6-54449dfb8c50}, !- Zone Equipment 1
   1,                                      !- Zone Equipment Cooling Sequence 1
   1,                                      !- Zone Equipment Heating or No-Load Sequence 1
-  {5473eb23-0770-4a35-ad57-57e8e12dbd08}, !- Zone Equipment 2
+  {eb1399f6-ff46-498b-b9e8-689ccb04aeb4}, !- Zone Equipment 2
   2,                                      !- Zone Equipment Cooling Sequence 2
-  2,                                      !- Zone Equipment Heating or No-Load Sequence 2
-  {eb1399f6-ff46-498b-b9e8-689ccb04aeb4}, !- Zone Equipment 3
-  3,                                      !- Zone Equipment Cooling Sequence 3
-  3;                                      !- Zone Equipment Heating or No-Load Sequence 3
+  2;                                      !- Zone Equipment Heating or No-Load Sequence 2
 
 OS:ThermostatSetpoint:DualSetpoint,
   {5546b337-6952-41bc-b902-30b6ece7499c}, !- Handle
@@ -16248,7 +16243,7 @@ OS:WeatherFile,
   -73.75,                                 !- Longitude {deg}
   -5,                                     !- Time Zone {hr}
   36,                                     !- Elevation {m}
-  file:///C:/Users/levei/AppData/Local/Temp/OpenStudioApp.sQ1472/resources/files/CAN_PQ_Montreal.Intl.AP.716270_CWEC.epw, !- Url
+  file:///C:/Users/levei/AppData/Local/Temp/OpenStudioApp.x11224/resources/files/CAN_PQ_Montreal.Intl.AP.716270_CWEC.epw, !- Url
   3C3F39E2;                               !- Checksum
 
 OS:SizingPeriod:DesignDay,
@@ -16661,23 +16656,6 @@ OS:ElectricEquipment:Definition,
   ,                                       !- Fraction Radiant
   0.1;                                    !- Fraction Lost
 
-OS:OtherEquipment:Definition,
-  {74095866-3096-48bc-9e21-eeb218aa43f3}, !- Handle
-  Plants Latent Loads,                    !- Name
-  Watts/Area,                             !- Design Level Calculation Method
-  ,                                       !- Design Level {W}
-  426.5,                                  !- Watts per Space Floor Area {W/m2}
-  ,                                       !- Watts per Person {W/Person}
-  1;                                      !- Fraction Latent
-
-OS:OtherEquipment:Definition,
-  {2cddb043-2d5b-4664-9ce7-37d41eddd9a7}, !- Handle
-  Plants Sensible Loads,                  !- Name
-  EquipmentLevel,                         !- Design Level Calculation Method
-  -140105.273,                            !- Design Level {W}
-  ,                                       !- Watts per Space Floor Area {W/m2}
-  ;                                       !- Watts per Person {W/Person}
-
 OS:Lights,
   {fa0323a6-8db1-4b91-96c8-9e11357b83c6}, !- Handle
   STD 400WHPS,                            !- Name
@@ -16716,26 +16694,6 @@ OS:ElectricEquipment,
   {88df38f7-f7ca-49ff-b888-dce146dad2c0}, !- Space or SpaceType Name
   {336bb12c-1db3-4d60-83bf-aba622976b5e}, !- Schedule Name
   ,                                       !- Multiplier
-  General;                                !- End-Use Subcategory
-
-OS:OtherEquipment,
-  {9379657a-ffae-41bf-bc1c-4296b1fd8ad0}, !- Handle
-  Other Equipment 1,                      !- Name
-  {74095866-3096-48bc-9e21-eeb218aa43f3}, !- Other Equipment Definition Name
-  {88df38f7-f7ca-49ff-b888-dce146dad2c0}, !- Space or SpaceType Name
-  {2581c694-d474-4a60-bdac-b059b7c60dba}, !- Schedule Name
-  ,                                       !- Multiplier
-  ,                                       !- Fuel Type
-  General;                                !- End-Use Subcategory
-
-OS:OtherEquipment,
-  {36b84bfe-8479-4a5b-8ef1-eefcf64e42c5}, !- Handle
-  Other Equipment 2,                      !- Name
-  {2cddb043-2d5b-4664-9ce7-37d41eddd9a7}, !- Other Equipment Definition Name
-  {88df38f7-f7ca-49ff-b888-dce146dad2c0}, !- Space or SpaceType Name
-  {18a08951-1df1-437f-83a9-89f2393ffaf2}, !- Schedule Name
-  ,                                       !- Multiplier
-  ,                                       !- Fuel Type
   General;                                !- End-Use Subcategory
 
 OS:Schedule:FixedInterval,
@@ -34278,22 +34236,6 @@ OS:Schedule:FixedInterval,
   0.280890167,                            !- Value 8759
   0.280890167;                            !- Value 8760
 
-OS:ZoneHVAC:Dehumidifier:DX,
-  {5473eb23-0770-4a35-ad57-57e8e12dbd08}, !- Handle
-  Zone HVAC Dehumidifier,                 !- Name
-  {e8c391d0-078d-410e-b8a8-42ac1482efd5}, !- Availability Schedule Name
-  {1e6899e6-8d77-4da0-bf35-68d56b539c8d}, !- Air Inlet Node Name
-  {1aa2efb8-15ef-449e-9ce2-b0fd70453bc6}, !- Air Outlet Node Name
-  5000,                                   !- Rated Water Removal {L/day}
-  3.412,                                  !- Rated Energy Factor {L/kWh}
-  0.12036,                                !- Rated Air Flow Rate {m3/s}
-  {d8acc91e-dabb-453e-861a-21e92b7f4716}, !- Water Removal Curve Name
-  {babeda37-c94e-4163-9bab-549724c2e816}, !- Energy Factor Curve Name
-  {312d362c-e811-4156-b194-7ad10fd024d0}, !- Part Load Fraction Correlation Curve Name
-  10,                                     !- Minimum Dry-Bulb Temperature for Dehumidifier Operation {C}
-  32,                                     !- Maximum Dry-Bulb Temperature for Dehumidifier Operation {C}
-  0;                                      !- Off-Cycle Parasitic Electric Load {W}
-
 ! Always On Discrete
 OS:Schedule:Constant,
   {e8c391d0-078d-410e-b8a8-42ac1482efd5}, !- Handle
@@ -34346,50 +34288,6 @@ OS:ScheduleTypeLimits,
   1,                                      !- Upper Limit Value
   Discrete,                               !- Numeric Type
   Availability;                           !- Unit Type
-
-OS:Node,
-  {24608048-e19e-4996-89b3-2374e9ce2a52}, !- Handle
-  Node 167,                               !- Name
-  {422c207c-6b94-476a-8796-7bae3c04194f}, !- Inlet Port
-  {1e6899e6-8d77-4da0-bf35-68d56b539c8d}; !- Outlet Port
-
-OS:Connection,
-  {422c207c-6b94-476a-8796-7bae3c04194f}, !- Handle
-  {79577e9a-c610-48b7-aff9-65e1efc56073}, !- Name
-  {b00ee097-7f16-4b95-b088-c4b435ad3b72}, !- Source Object
-  3,                                      !- Outlet Port
-  {24608048-e19e-4996-89b3-2374e9ce2a52}, !- Target Object
-  2;                                      !- Inlet Port
-
-OS:Connection,
-  {1e6899e6-8d77-4da0-bf35-68d56b539c8d}, !- Handle
-  {22dcc9c9-7c5a-4eae-8639-6fea9525f5c1}, !- Name
-  {24608048-e19e-4996-89b3-2374e9ce2a52}, !- Source Object
-  3,                                      !- Outlet Port
-  {5473eb23-0770-4a35-ad57-57e8e12dbd08}, !- Target Object
-  3;                                      !- Inlet Port
-
-OS:Node,
-  {6997877a-53a7-4c1f-b870-9eb1462bbbfe}, !- Handle
-  Node 168,                               !- Name
-  {1aa2efb8-15ef-449e-9ce2-b0fd70453bc6}, !- Inlet Port
-  {600acb4a-f30b-44eb-a13b-43fc6e26f11e}; !- Outlet Port
-
-OS:Connection,
-  {600acb4a-f30b-44eb-a13b-43fc6e26f11e}, !- Handle
-  {63f5f600-2c83-4f91-b2c0-e5e9fe52ad2f}, !- Name
-  {6997877a-53a7-4c1f-b870-9eb1462bbbfe}, !- Source Object
-  3,                                      !- Outlet Port
-  {77372061-c1fc-4004-82b7-f411e9254904}, !- Target Object
-  3;                                      !- Inlet Port
-
-OS:Connection,
-  {1aa2efb8-15ef-449e-9ce2-b0fd70453bc6}, !- Handle
-  {940d709d-59f9-4cd2-8869-7e7b90defa7e}, !- Name
-  {5473eb23-0770-4a35-ad57-57e8e12dbd08}, !- Source Object
-  4,                                      !- Outlet Port
-  {6997877a-53a7-4c1f-b870-9eb1462bbbfe}, !- Target Object
-  2;                                      !- Inlet Port
 
 OS:ZoneControl:Humidistat,
   {eb10e827-0bcb-4cc7-999f-5b0db40b13b0}, !- Handle
@@ -35160,7 +35058,7 @@ OS:Connection,
   {eb801a26-ba3c-475c-9eca-86bbb03a3aa5}, !- Source Object
   3,                                      !- Outlet Port
   {77372061-c1fc-4004-82b7-f411e9254904}, !- Target Object
-  4;                                      !- Inlet Port
+  3;                                      !- Inlet Port
 
 OS:Connection,
   {1ca5f8e4-4302-4915-8253-1c39018762e2}, !- Handle
@@ -35236,64 +35134,57 @@ OS:Controller:WaterCoil,
   0;                                      !- Minimum Actuated Flow {m3/s}
 
 OS:Output:Variable,
-  {e527c81b-b4d1-48d0-a5ec-523463f0f32f}, !- Handle
+  {fc4b077a-6ac3-4371-90a9-85802cdb134f}, !- Handle
   Output Variable 1,                      !- Name
   *,                                      !- Key Value
   Heating Coil Electric Energy,           !- Variable Name
   runperiod;                              !- Reporting Frequency
 
 OS:Output:Variable,
-  {1b27e91b-0fef-469a-a12e-22ef65d826e3}, !- Handle
+  {709dc491-d7d4-45dc-a31d-a81ba3c70870}, !- Handle
   Output Variable 2,                      !- Name
   *,                                      !- Key Value
   Cooling Coil Total Cooling Energy,      !- Variable Name
   runperiod;                              !- Reporting Frequency
 
 OS:Output:Variable,
-  {8d8044e4-2053-4d28-b08f-f36371e93e08}, !- Handle
+  {20c23046-6a65-43e8-bca4-e445b6e2e775}, !- Handle
   Output Variable 3,                      !- Name
   *,                                      !- Key Value
   Zone Mean Air Temperature,              !- Variable Name
   hourly;                                 !- Reporting Frequency
 
 OS:Output:Variable,
-  {dfa9e0ea-9ec9-4d49-b74b-559dcf031d3f}, !- Handle
+  {a2973a56-a440-4ddc-b2a1-8f79519bffdb}, !- Handle
   Output Variable 4,                      !- Name
   *,                                      !- Key Value
   Zone Air Relative Humidity,             !- Variable Name
   hourly;                                 !- Reporting Frequency
 
 OS:Output:Variable,
-  {341bc947-8843-4b16-9cee-fabbdab46854}, !- Handle
+  {155a5400-2441-4356-b20a-5d7a493ebfe1}, !- Handle
   Output Variable 5,                      !- Name
   *,                                      !- Key Value
   Lights Electric Energy,                 !- Variable Name
   runperiod;                              !- Reporting Frequency
 
 OS:Output:Variable,
-  {b97e6791-906a-4efd-8ac8-7a6b9fc8a09a}, !- Handle
+  {a480111e-f3b0-425b-9b86-4cbaf18ec919}, !- Handle
   Output Variable 6,                      !- Name
   *,                                      !- Key Value
   Fan Electric Energy,                    !- Variable Name
   runperiod;                              !- Reporting Frequency
 
 OS:Output:Variable,
-  {48be213b-ce2c-4382-98ee-42fc5750d553}, !- Handle
+  {77864d66-eecb-4472-bc78-238841669930}, !- Handle
   Output Variable 7,                      !- Name
-  *,                                      !- Key Value
-  Zone Dehumidifier Electric Energy,      !- Variable Name
-  runperiod;                              !- Reporting Frequency
-
-OS:Output:Variable,
-  {46368bf8-a531-49b6-b1a7-3181a3e3dc73}, !- Handle
-  Output Variable 8,                      !- Name
   *,                                      !- Key Value
   Electric Equipment Electric Energy,     !- Variable Name
   runperiod;                              !- Reporting Frequency
 
 OS:Output:Variable,
-  {cf7b2bc4-2981-4d6d-8138-361d1783d934}, !- Handle
-  Output Variable 9,                      !- Name
+  {57e116b2-870a-4e1b-88db-c4a8ebc27f47}, !- Handle
+  Output Variable 8,                      !- Name
   *,                                      !- Key Value
   Lights Visible Radiation Heating Energy, !- Variable Name
   hourly;                                 !- Reporting Frequency
